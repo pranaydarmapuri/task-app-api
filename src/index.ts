@@ -1,14 +1,17 @@
+import { config } from 'dotenv'
+config()
 import express from 'express'
+
+import env from './utils/env'
 
 import todoRoutes from './routes/todo.routes'
 
-const port = process.env.PORT || 8080
 
 const app = express()
 
 app.use('/', todoRoutes)
 
-app.listen(port, () => {
+app.listen(env.PORT, () => {
   // tslint:disable-next-line:no-console
-  console.log('API running at port:', port)
+  console.log('API running at port:', env.PORT)
 })
